@@ -1,0 +1,10 @@
+apply {
+    from script('libraries')
+    from script('groovy')
+}
+
+sonar {
+    project {
+        language = 'groovy'
+    }
+}

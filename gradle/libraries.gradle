@@ -2,6 +2,7 @@ repositories { mavenCentral() }
 
 ext {
     libraries = [
-        junit: dependencies.create('junit:junit:+')
+        spock: dependencies.create('org.spockframework:spock-core:+'),
+        groovy: dependencies.create('org.codehaus.groovy:groovy-all:+')
     ]
 }

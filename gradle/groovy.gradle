@@ -1,8 +1,9 @@
 apply {
-    plugin 'java'
+    plugin 'groovy'
     from script('libraries')
 }
 
 dependencies {
+    compile libraries.groovy
     testCompile libraries.spock
 }
