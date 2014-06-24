@@ -1,0 +1,12 @@
+rootProject.name = 'api-fake-tool'
+
+['core',
+ 'core:api-dsl',
+ 'core:util',
+ 'fake-server',
+ 'fake-client'].each { sub ->
+    include sub
+    project(":${sub}").with {
+        buildFileName = "${sub.replace(':', '-')}.gradle"
+    }
+}

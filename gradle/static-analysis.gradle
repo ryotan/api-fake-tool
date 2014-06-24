@@ -1,0 +1,5 @@
+apply {
+    from script('checkstyle')
+    from script('findbugs')
+    from script('pmd')
+}

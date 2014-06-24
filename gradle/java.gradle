@@ -1,0 +1,8 @@
+apply {
+    plugin 'java'
+    from script('libraries')
+}
+
+dependencies {
+    testCompile libraries.junit
+}

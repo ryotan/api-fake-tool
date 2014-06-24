@@ -1,0 +1,42 @@
+defaultTasks 'build'
+
+apply {
+    from script('wrapper')
+    from script('sonar')
+}
+
+ext {
+    fileEncoding = 'utf-8'
+}
+
+subprojects {
+    apply {
+        from script('java')
+        from script('static-analysis')
+    }
+
+    setupFileEncoding(tasks)
+}
+
+
+/*******************************************************************************
+ * Utility Methods
+ ******************************************************************************/
+
+def script(name) {
+    rootProject.file("gradle/${name}.gradle")
+}
+
+def setupFileEncoding(tasks) {
+    def encoding = { it.encoding = fileEncoding }
+    tasks.with {
+        withType(GroovyCompile) {
+            encoding(it.groovyOptions)
+            encoding(it.options)
+        }
+        withType(JavaCompile) {
+            encoding(it.options)
+        }
+    }
+}
+
