@@ -1,8 +1,31 @@
+def groovyVer = '2.4.0+'
+
 repositories { mavenCentral() }
 
 ext {
     libraries = [
-        spock: dependencies.create('org.spockframework:spock-core:+'),
-        groovy: dependencies.create('org.codehaus.groovy:groovy-all:+')
+
+        http: dependencies.create('org.apache.httpcomponents:httpclient:+'),
+
+        groovy: dependencies.create("org.codehaus.groovy:groovy-all:${groovyVer}"),
+
+        guava: dependencies.create("com.google.guava:guava:+"),
+
+        logback: [
+            dependencies.create('ch.qos.logback:logback-core:+'),
+            dependencies.create('ch.qos.logback:logback-classic:+'),
+            dependencies.create('ch.qos.logback:logback-access:+'),
+        ],
+
+        slf4j: dependencies.create('org.slf4j:slf4j-api:+'),
+
+        spock: [
+            dependencies.create('org.spockframework:spock-core:+') {
+                exclude module: 'groovy-all'
+                exclude module: 'junit-dep'
+            },
+            dependencies.create('junit:junit:+'),
+            dependencies.create("org.codehaus.groovy:groovy-all:${groovyVer}")
+        ],
     ]
 }

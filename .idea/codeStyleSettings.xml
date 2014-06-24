@@ -45,6 +45,7 @@
         <option name="HTML_SPACE_INSIDE_EMPTY_TAG" value="true" />
         <ClojureCodeStyleSettings />
         <GroovyCodeStyleSettings>
+          <option name="ALIGN_NAMED_ARGS_IN_MAP" value="false" />
           <option name="CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND" value="99" />
           <option name="NAMES_COUNT_TO_USE_IMPORT_ON_DEMAND" value="99" />
         </GroovyCodeStyleSettings>
@@ -77,9 +78,8 @@
           <option name="KEEP_BLANK_LINES_BEFORE_RBRACE" value="0" />
           <option name="BLANK_LINES_AROUND_FIELD_IN_INTERFACE" value="1" />
           <option name="BLANK_LINES_AFTER_CLASS_HEADER" value="1" />
-          <option name="ALIGN_MULTILINE_CHAINED_METHODS" value="true" />
-          <option name="ALIGN_MULTILINE_PARAMETERS_IN_CALLS" value="true" />
-          <option name="ALIGN_MULTILINE_ASSIGNMENT" value="true" />
+          <option name="ALIGN_MULTILINE_PARAMETERS" value="false" />
+          <option name="ALIGN_MULTILINE_FOR" value="false" />
           <option name="ALIGN_MULTILINE_TERNARY_OPERATION" value="true" />
           <option name="ALIGN_MULTILINE_THROWS_LIST" value="true" />
           <option name="ALIGN_MULTILINE_EXTENDS_LIST" value="true" />
@@ -216,7 +216,6 @@
       </value>
     </option>
     <option name="USE_PER_PROJECT_SETTINGS" value="true" />
-    <option name="PREFERRED_PROJECT_CODE_STYLE" value="my-codestyle" />
   </component>
 </project>
 
