@@ -1,6 +1,6 @@
-package net.itr0.tool.api.dsl
+package kaba.defapi.dsl
 
-import net.itr0.tool.api.ApiDefinitionContainer
+import kaba.defapi.ApiContainer
 
 /**
  * API定義を読み込むクラス。
@@ -10,7 +10,7 @@ import net.itr0.tool.api.ApiDefinitionContainer
  */
 class DslScriptHandler {
 
-    static ApiDefinitionContainer load(String dsl) {
+    static ApiContainer load(String dsl) {
         Script script = new GroovyShell().parse(dsl)
         def handler = new ApiDefinitionHandler()
         script.metaClass {

@@ -1,7 +1,7 @@
-package net.itr0.tool.api.dsl
+package kaba.defapi.dsl
 
-import net.itr0.tool.api.Api
-import net.itr0.tool.api.ApiDefinitionContainer
+import kaba.defapi.Api
+import kaba.defapi.ApiContainer
 
 /**
  *
@@ -10,7 +10,7 @@ import net.itr0.tool.api.ApiDefinitionContainer
  */
 class ApiDefinitionHandler {
 
-    ApiDefinitionContainer container = new ApiDefinitionContainer()
+    ApiContainer container = new ApiContainer()
 
     def methodMissing(String name, args) {
         if (!(args.size() == 1 && Closure.isAssignableFrom(args.first().class))) {
