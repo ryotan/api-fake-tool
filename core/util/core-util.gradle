@@ -1,0 +1,6 @@
+apply {
+    from script('libraries')
+    from script('java')
+}
+
+setupFileEncoding(tasks)

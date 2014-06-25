@@ -3,6 +3,10 @@ apply {
     from script('groovy')
 }
 
+dependencies {
+    compile project(':core:util')
+}
+
 sonar {
     project {
         language = 'groovy'

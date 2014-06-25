@@ -16,7 +16,7 @@ defapi {
   "api-name" {
     path "/books/{id:[0-9]{8}}/edit"
     method POST
-    content-type "application/json"
+    contentType "application/json"
   }
 }
 ```
