@@ -9,15 +9,6 @@ ext {
     fileEncoding = 'utf-8'
 }
 
-subprojects {
-    apply {
-        from script('java')
-        from script('static-analysis')
-    }
-
-    setupFileEncoding(tasks)
-}
-
 
 /*******************************************************************************
  * Utility Methods

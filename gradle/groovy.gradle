@@ -1,4 +1,5 @@
 apply {
+    from script('java')
     plugin 'groovy'
     from script('libraries')
 }

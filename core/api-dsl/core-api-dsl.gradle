@@ -8,3 +8,5 @@ sonar {
         language = 'groovy'
     }
 }
+
+setupFileEncoding(tasks)
