@@ -3,9 +3,10 @@
 # Kaba API Fake Tool
 
 A tool to define and fake Web APIs.
-- [ ] Define API and build documents of it.
+- [ ] Define API.
 - [ ] Run a fake API server which responds according to API definition.
 - [ ] Send specified host a request and verify result according to API definition.
+- [ ] Build documents of defined API.
 
 ## Features
 ### Define API
