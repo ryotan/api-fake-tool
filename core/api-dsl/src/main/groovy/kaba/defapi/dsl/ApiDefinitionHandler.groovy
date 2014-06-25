@@ -1,8 +1,6 @@
 package kaba.defapi.dsl
-
 import kaba.defapi.Api
 import kaba.defapi.ApiContainer
-
 /**
  *
  * @author ryotan
@@ -24,31 +22,6 @@ class ApiDefinitionHandler {
         cl.resolveStrategy = Closure.DELEGATE_FIRST
         cl()
 
-        container.add(new Api(name))
+        container.add(handler.api)
     }
-}
-
-class NamedApiHandler {
-
-    static final HttpMethod POST = HttpMethod.POST
-
-    NamedApiHandler(String name) {
-    }
-
-    def path(String path) {
-    }
-
-    def method(HttpMethod method) {
-    }
-
-    def contentType(String media) {
-    }
-}
-
-enum HttpMethod {
-
-    GET,
-    POST,
-    PUT,
-    DELETE
 }
