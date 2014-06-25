@@ -2,8 +2,11 @@
   <dictionary name="ryotan">
     <words>
       <w>apis</w>
+      <w>defapi</w>
       <w>httpclient</w>
       <w>httpcomponents</w>
+      <w>licensable</w>
+      <w>licensor</w>
     </words>
   </dictionary>
 </component>
