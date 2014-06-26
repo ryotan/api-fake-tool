@@ -17,13 +17,19 @@ class NamedApiHandler {
         this.api = new Api(name)
     }
 
-    def path(String path) {
+    Api path(String path) {
+        this.api.path = path
+        return this.api
     }
 
-    def method(HttpMethod method) {
+    Api method(HttpMethod method) {
+        this.api.method = method
+        return this.api
     }
 
-    def contentType(String media) {
+    Api contentType(String media) {
+        this.api.contentType = media
+        return this.api
     }
 }
 

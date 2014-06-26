@@ -1,6 +1,8 @@
 package kaba.defapi.dsl
 
+import kaba.defapi.HttpMethod
 import spock.lang.Specification
+
 /**
  * Spec for {@link DslScriptHandler}
  *
@@ -14,9 +16,25 @@ class DslScriptHandlerSpec extends Specification {
         def dsl = """
                 | defapi {
                 |   "api-name" {
-                |     // path "/books/{id:[0-9]{8}}/edit"
-                |     // method POST
-                |     // contentType "application/json"
+                |   }
+                | }
+                | """.stripMargin('|')
+
+        when:
+        def loaded = DslScriptHandler.load(dsl)
+
+        then:
+        loaded["api-name"] == null
+    }
+
+    def "DslScriptHandler#load(String)で、defapi{\"api-name\"{}}を読み込めること。"() {
+        given:
+        def dsl = """
+                | defapi {
+                |   "api-name" {
+                |     path "/books/{id:[0-9]{8}}/edit"
+                |     method POST
+                |     contentType "application/json"
                 |   }
                 | }
                 | """.stripMargin('|')
@@ -27,6 +45,9 @@ class DslScriptHandlerSpec extends Specification {
         then:
         loaded["api-name"].with {
             name == "api-name"
+            path == "/books/{id:[0-9]{8}}/edit"
+            method == HttpMethod.POST
+            contentType == "application/json"
         }
     }
 }

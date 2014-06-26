@@ -1,6 +1,8 @@
 package kaba.defapi.dsl
+
 import kaba.defapi.Api
 import kaba.defapi.ApiContainer
+
 /**
  *
  * @author ryotan
@@ -20,8 +22,9 @@ class ApiDefinitionHandler {
         def handler = new NamedApiHandler(name)
         cl.delegate = handler
         cl.resolveStrategy = Closure.DELEGATE_FIRST
-        cl()
 
-        container.add(handler.api)
+
+        Api api = cl()
+        api ? container.add(api) : container
     }
 }
