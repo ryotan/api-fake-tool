@@ -23,8 +23,7 @@ class ApiDefinitionHandler {
         cl.delegate = handler
         cl.resolveStrategy = Closure.DELEGATE_FIRST
 
-
         Api api = cl()
-        api ? container.add(api) : container
+        return api ? container.add(api) : container
     }
 }
