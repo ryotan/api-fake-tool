@@ -4,7 +4,7 @@ apply {
 }
 
 dependencies {
-    compile project(':core:util')
+    compile project(':core')
 }
 
 sonar {
