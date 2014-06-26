@@ -10,17 +10,19 @@ import kaba.defapi.ApiContainer
  */
 class DslScriptHandler {
 
-    static ApiContainer load(String dsl) {
+    def handler = new ApiDefinitionHandler()
+
+    ApiContainer load(String dsl) {
         Script script = new GroovyShell().parse(dsl)
-        def handler = new ApiDefinitionHandler()
         script.metaClass {
             defapi { Closure cl ->
-                cl.delegate = handler
+                cl.delegate = this.handler
                 cl.resolveStrategy = DELEGATE_ONLY
                 return cl()
             }
         }
+
         script.run()
-        return handler.container
+        return this.handler.container
     }
 }
