@@ -1,4 +1,4 @@
-package kaba.defapi;
+package kaba.defapi.http;
 
 /**
  * @author ryotan

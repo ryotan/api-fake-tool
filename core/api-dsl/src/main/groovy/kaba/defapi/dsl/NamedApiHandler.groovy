@@ -1,7 +1,7 @@
 package kaba.defapi.dsl
 
 import kaba.defapi.Api
-import kaba.defapi.HttpMethod
+import kaba.defapi.http.HttpMethod
 
 /**
  *
@@ -10,7 +10,11 @@ import kaba.defapi.HttpMethod
  */
 class NamedApiHandler {
 
+    static final HttpMethod GET = HttpMethod.GET
     static final HttpMethod POST = HttpMethod.POST
+    static final HttpMethod PUT = HttpMethod.PUT
+    static final HttpMethod DELETE = HttpMethod.DELETE
+
     Api api
 
     NamedApiHandler(String name) {

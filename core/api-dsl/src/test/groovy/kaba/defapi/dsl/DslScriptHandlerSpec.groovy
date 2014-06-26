@@ -1,6 +1,6 @@
 package kaba.defapi.dsl
 
-import kaba.defapi.HttpMethod
+import kaba.defapi.http.HttpMethod
 import spock.lang.Specification
 
 /**

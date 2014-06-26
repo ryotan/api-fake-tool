@@ -1,5 +1,7 @@
 package kaba.defapi;
 
+import kaba.defapi.http.HttpMethod;
+
 /**
  * @author ryotan
  * @since 1.0
