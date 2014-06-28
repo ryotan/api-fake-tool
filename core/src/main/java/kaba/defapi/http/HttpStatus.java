@@ -1,5 +1,7 @@
 package kaba.defapi.http;
 
+import java.util.stream.Stream;
+
 /**
  * HTTP status definitions according to RFC 2616.
  *
@@ -89,5 +91,18 @@ public enum HttpStatus {
      */
     public String getMessage() {
         return message;
+    }
+
+    /**
+     * Returns {@link HttpStatus} whose status code is {@code statusCode}.
+     *
+     * @param statusCode HTTP status code
+     * @return {@link HttpStatus} of {@code statusCode}
+     */
+    public static HttpStatus of(int statusCode) {
+        return Stream.of(HttpStatus.values())
+                     .filter(status -> status.getStatusCode() == statusCode)
+                     .findFirst()
+                     .orElseThrow(() -> new IllegalArgumentException("HTTP status for status code [" + statusCode + "] is not defined."));
     }
 }

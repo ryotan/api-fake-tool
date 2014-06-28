@@ -12,6 +12,30 @@ import spock.lang.Unroll
 class HttpStatusSpec extends Specification {
 
     @Unroll
+    def "HttpStatus.of(#code) should be #status."() {
+        expect:
+        HttpStatus.of(code) == status
+
+        where:
+        status               | code
+        HttpStatus.OK        | 200
+        HttpStatus.FOUND     | 302
+        HttpStatus.SEE_OTHER | 303
+    }
+
+    def "HttpStatus.of(int) throws Exception when matching status doesn't exist."() {
+        given:
+        def nonExist = 999
+
+        when:
+        HttpStatus.of(nonExist)
+
+        then:
+        def e = thrown(IllegalArgumentException)
+        e.message.contains(String.valueOf(nonExist))
+    }
+
+    @Unroll
     def "#status should have status code: #code, message: #message. (RFC 2616)."() {
         expect:
         status.getStatusCode() == code
