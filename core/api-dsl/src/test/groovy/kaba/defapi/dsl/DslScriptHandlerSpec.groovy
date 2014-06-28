@@ -1,7 +1,8 @@
 package kaba.defapi.dsl
 
+import kaba.defapi.Api
+import kaba.defapi.ApiContainer
 import kaba.defapi.http.HttpMethod
-import spock.lang.Shared
 import spock.lang.Specification
 
 /**
@@ -12,14 +13,13 @@ import spock.lang.Specification
  */
 class DslScriptHandlerSpec extends Specification {
 
-    @Shared
     def sut = new DslScriptHandler()
 
-    def "DslScriptHandler#load(String)で、defapi{}を読み込めること。"() {
+    def "空のAPI定義は、ロードしてもコンテナには追加されないこと。"() {
         given:
         def dsl = """
                 | defapi {
-                |   "empty" {
+                |   "empty closure" {
                 |   }
                 | }
                 | """.stripMargin('|')
@@ -31,51 +31,38 @@ class DslScriptHandlerSpec extends Specification {
         loaded["api-name"] == null
     }
 
-    def "DslScriptHandler#load(String)で、defapi{\"api-name\"{}}を読み込めること。"() {
+    def "API定義ブロックを読み込めること。複数回読み込んだときは、コンテナに追加されること。"() {
         given:
         def dsl = """
                 | defapi {
                 |   "api1" {
                 |     path "/books/{id:[0-9]{8}}/edit"
                 |     method POST
-                |     contentType "application/json"
                 |   }
                 | }
                 | """.stripMargin('|')
-
-        when:
-        def loaded = sut.load(dsl)
-
-        then:
-        loaded["api1"].with {
-            name == "api1"
-            path == "/books/{id:[0-9]{8}}/edit"
-            method == HttpMethod.POST
-            contentType == "application/json"
-        }
-    }
-
-    def "DslScriptHandler#load(String)で、defapi{\"api-name\"{}}を読み込めること。その２"() {
-        given:
-        def dsl = """
+        def dsl2 = """
                 | defapi {
                 |   "api2" {
-                |     path "/books/{id:[0-9]{8}}/edit"
-                |     method POST
-                |     contentType "application/json"
+                |     path "/books/{id}"
+                |     method GET
                 |   }
                 | }
                 | """.stripMargin('|')
 
         when:
-        def loaded = sut.load(dsl)
+        sut.load(dsl)
+        ApiContainer loaded = sut.load(dsl2)
 
         then:
-        loaded["api1"].with {
-            name == "api1"
-            path == "/books/{id:[0-9]{8}}/edit"
-            method == HttpMethod.POST
-            contentType == "application/json"
-        }
+        Api api1 = loaded.get("api1")
+        api1.name == "api1"
+        api1.path == "/books/{id:[0-9]{8}}/edit"
+        api1.method == HttpMethod.POST
+
+        Api api2 = loaded.get("api2")
+        api2.name == "api2"
+        api2.path == "/books/{id}"
+        api2.method == HttpMethod.GET
     }
 }
