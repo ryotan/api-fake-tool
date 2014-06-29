@@ -7,11 +7,11 @@ import kaba.defapi.http.HttpResponseDef
  * @author ryotan
  * @since 1.0
  */
-class ResponseHandler {
+class HttpResponseDefHandler {
 
     HttpResponseDef response
 
-    ResponseHandler() {
+    HttpResponseDefHandler() {
         this.response = new HttpResponseDef()
     }
 

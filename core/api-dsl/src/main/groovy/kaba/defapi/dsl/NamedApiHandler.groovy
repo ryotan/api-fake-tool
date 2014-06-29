@@ -32,7 +32,7 @@ class NamedApiHandler {
     }
 
     Api response(Closure cl) {
-        def handler = new ResponseHandler()
+        def handler = new HttpResponseDefHandler()
         cl.delegate = handler
         cl.resolveStrategy = Closure.DELEGATE_ONLY
         this.api.response = cl()
