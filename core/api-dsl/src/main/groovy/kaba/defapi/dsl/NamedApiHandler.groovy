@@ -31,8 +31,11 @@ class NamedApiHandler {
         return this.api
     }
 
-    Api contentType(String media) {
-        this.api.contentType = media
+    Api response(Closure cl) {
+        def handler = new ResponseHandler()
+        cl.delegate = handler
+        cl.resolveStrategy = Closure.DELEGATE_ONLY
+        this.api.response = cl()
         return this.api
     }
 }

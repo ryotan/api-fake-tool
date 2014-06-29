@@ -65,4 +65,47 @@ class DslScriptHandlerSpec extends Specification {
         api2.path == "/books/{id}"
         api2.method == HttpMethod.GET
     }
+
+    def "API定義の中のresponseブロックを読み込めること。"() {
+        given:
+        def dsl = """
+                | defapi {
+                |   "api1" {
+                |     path "/books/{id}/edit"
+                |     method POST
+                |
+                |     response {
+                |       contentType "application/json"
+                |       body \"""
+                |         {
+                |           "bookId": "Description of 'bookId'"
+                |           , "isbn": "Description of 'isbn'"
+                |           , "title": "Description of 'title'"
+                |           , "author": "Description of 'author'"
+                |         }
+                |         \"""
+                |     }
+                |   }
+                | }
+                | """.stripMargin('|')
+
+        when:
+        ApiContainer loaded = sut.load(dsl)
+
+        then:
+        def api = loaded.get("api1")
+        def res = api.response
+
+        api.name == "api1"
+        api.path == "/books/{id}/edit"
+        res.contentType == "application/json"
+        res.body == """
+                |         {
+                |           "bookId": "Description of 'bookId'"
+                |           , "isbn": "Description of 'isbn'"
+                |           , "title": "Description of 'title'"
+                |           , "author": "Description of 'author'"
+                |         }
+                |         """.stripMargin('|')
+    }
 }
