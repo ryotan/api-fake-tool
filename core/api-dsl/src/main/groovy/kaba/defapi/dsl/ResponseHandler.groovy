@@ -1,6 +1,6 @@
 package kaba.defapi.dsl
 
-import kaba.defapi.http.HttpResponse
+import kaba.defapi.http.HttpResponseDef
 
 /**
  *
@@ -9,18 +9,18 @@ import kaba.defapi.http.HttpResponse
  */
 class ResponseHandler {
 
-    HttpResponse response
+    HttpResponseDef response
 
     ResponseHandler() {
-        this.response = new HttpResponse()
+        this.response = new HttpResponseDef()
     }
 
-    HttpResponse contentType(String contentType) {
+    HttpResponseDef contentType(String contentType) {
         this.response.contentType = contentType
         return this.response
     }
 
-    HttpResponse body(String body) {
+    HttpResponseDef body(String body) {
         this.response.body = body
         return this.response
     }

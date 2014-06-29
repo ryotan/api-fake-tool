@@ -4,7 +4,7 @@ package kaba.defapi.http;
  * @author ryotan
  * @since 1.0
  */
-public class HttpResponse {
+public class HttpResponseDef {
 
     private String contentType;
 

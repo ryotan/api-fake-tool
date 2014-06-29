@@ -1,7 +1,7 @@
 package kaba.defapi;
 
 import kaba.defapi.http.HttpMethod;
-import kaba.defapi.http.HttpResponse;
+import kaba.defapi.http.HttpResponseDef;
 
 /**
  * @author ryotan
@@ -15,7 +15,7 @@ public class Api {
 
     private HttpMethod method;
 
-    private HttpResponse response;
+    private HttpResponseDef response;
 
     public Api(String name) {
         this.name = name;
@@ -41,11 +41,11 @@ public class Api {
         this.method = method;
     }
 
-    public HttpResponse getResponse() {
+    public HttpResponseDef getResponse() {
         return this.response;
     }
 
-    public void setResponse(HttpResponse response) {
+    public void setResponse(HttpResponseDef response) {
         this.response = response;
     }
 }
