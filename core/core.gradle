@@ -3,4 +3,8 @@ apply {
     from script('java')
 }
 
+dependencies {
+    compile libraries.guava
+}
+
 setupFileEncoding(tasks)

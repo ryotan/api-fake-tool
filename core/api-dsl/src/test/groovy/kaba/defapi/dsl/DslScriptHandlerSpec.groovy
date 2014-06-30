@@ -108,4 +108,48 @@ class DslScriptHandlerSpec extends Specification {
                 |         }
                 |         """.stripMargin('|')
     }
+
+    def "API定義の中のfixturesブロックを読み込めること。"() {
+        given:
+        def dsl = """
+                | defapi {
+                |   "api1" {
+                |     path "/books/{id}/edit"
+                |     method POST
+                |
+                |     fixtures {
+                |       "bookId 1" {
+                |         request id: 1
+                |         response \"""
+                |       {
+                |         "bookId": 1
+                |       , "isbn": "978-4-0000-0000-0"
+                |       , "title": "title of this book"
+                |       , "author": "author of this book"
+                |       }
+                |       \"""
+                |       }
+                |     }
+                |   }
+                | }
+                | """.stripMargin('|')
+
+        when:
+        ApiContainer loaded = sut.load(dsl)
+
+        then:
+        def api = loaded.get("api1")
+        def fixture = api.fixtures["bookId 1"]
+
+        fixture.name == "bookId 1"
+        fixture.params == [id: 1]
+        fixture.body == """
+                |       {
+                |         "bookId": 1
+                |       , "isbn": "978-4-0000-0000-0"
+                |       , "title": "title of this book"
+                |       , "author": "author of this book"
+                |       }
+                |       """.stripMargin('|')
+    }
 }

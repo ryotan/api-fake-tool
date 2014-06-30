@@ -38,5 +38,15 @@ class NamedApiHandler {
         this.api.response = cl()
         return this.api
     }
+
+    Api fixtures(Closure cl) {
+        def handler = new ApiFixtureHandler()
+        cl.delegate = handler
+        cl.resolveStrategy = Closure.DELEGATE_ONLY
+        cl()
+
+        this.api.fixtures = handler.fixtures
+        return this.api
+    }
 }
 
