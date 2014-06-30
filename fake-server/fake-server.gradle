@@ -1,0 +1,12 @@
+apply {
+    from script('libraries')
+    from script('java')
+}
+
+dependencies {
+    compile libraries.guava
+    compile libraries.jetty_server
+    testCompile libraries.jetty_test
+}
+
+setupFileEncoding(tasks)

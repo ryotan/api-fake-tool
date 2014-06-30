@@ -11,6 +11,10 @@ ext {
 
         guava: dependencies.create("com.google.guava:guava:+"),
 
+        jetty_server: dependencies.create("org.eclipse.jetty:jetty-server:+"),
+
+        jetty_test: dependencies.create("org.eclipse.jetty.toolchain:jetty-test-helper:+"),
+
         logback: [
             dependencies.create('ch.qos.logback:logback-core:+'),
             dependencies.create('ch.qos.logback:logback-classic:+'),
