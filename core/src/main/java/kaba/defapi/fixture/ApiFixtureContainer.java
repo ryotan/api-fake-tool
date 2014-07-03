@@ -10,4 +10,13 @@ import java.util.Map;
 public class ApiFixtureContainer {
 
     Map<String, ApiFixture> container = new LinkedHashMap<>();
+
+    public ApiFixtureContainer add(ApiFixture fixture) {
+        container.put(fixture.getName(), fixture);
+        return this;
+    }
+
+    public ApiFixture get(String spec) {
+        return container.get(spec);
+    }
 }

@@ -1,6 +1,7 @@
 package kaba.defapi.dsl
 
 import kaba.defapi.fixture.ApiFixture
+import kaba.defapi.fixture.ApiFixtureContainer
 
 /**
  *
@@ -9,7 +10,7 @@ import kaba.defapi.fixture.ApiFixture
  */
 class ApiFixtureHandler {
 
-    Map<String, ApiFixture> fixtures = [:];
+    ApiFixtureContainer fixtures = new ApiFixtureContainer();
 
     def methodMissing(String name, args) {
         if (!(args.size() == 1 && Closure.isAssignableFrom(args.first().class))) {
@@ -24,7 +25,7 @@ class ApiFixtureHandler {
         cl()
 
         def fixture = handler.fixture
-        fixtures.put(fixture.getName(), fixture)
+        fixtures.add(fixture)
     }
 }
 

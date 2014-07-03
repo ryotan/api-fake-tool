@@ -1,8 +1,7 @@
 package kaba.defapi;
 
-import java.util.Map;
-
 import kaba.defapi.fixture.ApiFixture;
+import kaba.defapi.fixture.ApiFixtureContainer;
 import kaba.defapi.http.HttpMethod;
 import kaba.defapi.http.HttpResponseDef;
 
@@ -20,7 +19,7 @@ public class Api {
 
     private HttpResponseDef response;
 
-    private Map<String, ApiFixture> fixtures;
+    private ApiFixtureContainer fixtures;
 
     public Api(String name) {
         this.name = name;
@@ -54,15 +53,15 @@ public class Api {
         this.response = response;
     }
 
-    public Map<String, ApiFixture> getFixtures() {
+    public ApiFixtureContainer getFixtures() {
         return this.fixtures;
     }
 
-    public void setFixtures(Map<String, ApiFixture> fixtures) {
+    public void setFixtures(ApiFixtureContainer fixtures) {
         this.fixtures = fixtures;
     }
 
     public void addFixture(ApiFixture fixture) {
-        this.fixtures.put(fixture.getParams().toString(), fixture);
+        this.fixtures.add(fixture);
     }
 }
