@@ -1,4 +1,4 @@
-package kaba.defapi.dsl
+package kaba.defapi.dsl.api
 
 import kaba.defapi.http.HttpResponseDef
 

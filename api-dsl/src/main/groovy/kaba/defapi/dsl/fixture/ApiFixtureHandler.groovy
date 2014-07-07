@@ -1,4 +1,4 @@
-package kaba.defapi.dsl
+package kaba.defapi.dsl.fixture
 
 import kaba.defapi.fixture.ApiFixture
 import kaba.defapi.fixture.ApiFixtureContainer

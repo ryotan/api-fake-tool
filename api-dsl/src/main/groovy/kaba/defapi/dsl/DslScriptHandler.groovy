@@ -1,6 +1,7 @@
 package kaba.defapi.dsl
 
 import kaba.defapi.ApiContainer
+import kaba.defapi.dsl.api.ApiDefinitionHandler
 
 /**
  * API定義を読み込むクラス。

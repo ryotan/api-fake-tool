@@ -1,6 +1,7 @@
-package kaba.defapi.dsl
+package kaba.defapi.dsl.api
 
 import kaba.defapi.Api
+import kaba.defapi.dsl.fixture.ApiFixtureHandler
 import kaba.defapi.http.HttpMethod
 
 /**
